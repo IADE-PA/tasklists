@@ -6,10 +6,12 @@
 #include "../controllers/task_list.h"
 #include "../models/tasks.h"
 
+#define _POSIX_C_SOURCE 200809L
+
 void run_cli() {
     char* line = NULL;
     size_t len = 0;
-    TaskList task_list = task_list_new();
+    TaskList* task_list = task_list_new();
     while (true) {
         getline(&line, &len, stdin);
         char* command = strtok(line, " \n");
@@ -20,13 +22,10 @@ void run_cli() {
             char* id = task_list_add_task(task_list, description);
             printf("Tarefa criada com identificador %s.\n", id);
         } else if (strcmp(command, "LT") == 0) {
-            Task* tasks = task_list_get_tasks(task_list);
-            int num_tasks = task_list_get_num_tasks(task_list);
-            for (int i = 0; i < num_tasks; i++) {
-                Task task = tasks[i];
-                if (task != NULL) {
-                    printf("%s %s %s\n", task_get_id(task), task_get_description(task), task_get_status(task));
-                }
+            Task** tasks = task_list_get_tasks(task_list);
+            for (int i = 0; i < task_list_get_num_tasks(task_list); i++) {
+                Task* task = tasks[i];
+                printf("%s %s %s\n", task_get_id(task), task_get_description(task), task_get_status(task));
             }
         } else if (strcmp(command, "MT") == 0) {
             char* id = strtok(NULL, "\n");

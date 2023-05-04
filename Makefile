@@ -1,5 +1,9 @@
-bin/main: main.c controllers/task_list.c models/tasks.c views/cli.c utils/singly_linked_list.c
-	gcc -g $^ -o $@
+CFLAGS = -Wall -Wextra -Werror -g
+CC = gcc
 
-clear:
+bin/main: main.c controllers/task_list.c models/tasks.c views/cli.c
+	mkdir -p bin
+	$(CC) $(CFLAGS) -o $@ $^
+
+clean:
 	rm bin/*

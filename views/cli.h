@@ -1,6 +1,3 @@
-#ifndef CLI_H
-#define CLI_H
+#pragma once
 
 void run_cli();
-
-#endif

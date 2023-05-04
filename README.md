@@ -1,4 +1,4 @@
-# Programação e Algoritmos 2022 2023 - [IADE - UE](https://www.iade.europeia.pt/) <!-- omit in toc -->
+# Programação e Algoritmos - [IADE - UE](https://www.iade.europeia.pt/) <!-- omit in toc -->
 
 ## Lista de Tarefas
 
@@ -13,17 +13,26 @@ Pretende-se um programa que permite o registo, consulta, e execução de tarefas
 
 ## Compilação
 
-    gcc -c models/tasks.c
-    gcc -c controllers/task_list.c
-    gcc -c views/cli.c
-    gcc -o main tasks.o task_list.o cli.o main.c
+    gcc -c -Wall -Wextra -Werror -g models/tasks.c
+    gcc -c -Wall -Wextra -Werror -g controllers/task_list.c
+    gcc -c -Wall -Wextra -Werror -g views/cli.c
+    gcc -Wall -Wextra -Werror -g -o main tasks.o task_list.o cli.o main.c
 
-Alternativa
+Alternativa 1
 
-    gcc -Wall -g models/tasks.h models/tasks.c controllers/task_list.h controllers/task_list.c views/cli.h views/cli.c main.c -o main
+    gcc -Wextra -Wall -g -o main models/tasks.c controllers/task_list.c views/cli.c main.c
 
-## Por completar
+Alternativa 2
 
-- [ ] Retirar a limitação de 10 tarefas;
-- [ ] Permitir eliminar tarefas;
-- [ ] Permitir listar tarefas ordenadamente por estado, id, ou descrição.
+    make
+
+### Flags de Compilação
+
+- `-Wall`: Ativa os warnings mais comuns.
+- `-Wextra`: Ativa alguns warnings adicionais.
+- `-Werror`: Trata os warnings como erros.
+- `-g`: Adiciona informação de debug ao executável ou objeto.
+- `-o main`: Define o nome do executável ou objeto.
+- `-c`: Compila um objeto. Não executa o linker.
+
+Mais informação sobre as fags de compilação em [https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html).
