@@ -2,8 +2,11 @@
 #define TASK_LIST_H
 
 #include "../models/tasks.h"
+#include "../utils/list.h"
 
-typedef struct TaskList_* TaskList;
+typedef struct {
+    List tasks;
+} TaskList_, *TaskList;
 
 TaskList task_list_new();
 

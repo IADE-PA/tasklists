@@ -4,12 +4,8 @@
 #include <string.h>
 #include "../utils/list.h"
 
-struct TaskList_ {
-    List tasks;
-};
-
 TaskList task_list_new() {
-    TaskList task_list = malloc(sizeof(struct TaskList_));
+    TaskList task_list = malloc(sizeof( TaskList_));
     task_list->tasks = list_create();
     return task_list;
 }
