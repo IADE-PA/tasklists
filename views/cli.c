@@ -6,6 +6,8 @@
 #include "../controllers/task_list.h"
 #include "../models/tasks.h"
 
+#define _POSIX_C_SOURCE 200809L
+
 void run_cli() {
     char* line = NULL;
     size_t len = 0;

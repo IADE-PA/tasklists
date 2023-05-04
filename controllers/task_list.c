@@ -21,7 +21,7 @@ void task_list_destroy(TaskList task_list) {
 
 char* _generate_id(TaskList task_list) {
     char* id = malloc(sizeof(char) * 10);
-    sprintf(id, "%d", list_size(task_list->tasks));
+    sprintf(id, "%ld", list_size(task_list->tasks));
     return id;
 }
 
@@ -51,5 +51,7 @@ int task_list_get_num_tasks(TaskList task_list) {
 }
 
 Task* task_list_get_tasks(TaskList task_list) {
-    return task_list->tasks;
+    Task* out = malloc(sizeof(Task) * list_size(task_list->tasks));
+    list_to_array(task_list->tasks, (void**)&out);
+    return out;
 }
